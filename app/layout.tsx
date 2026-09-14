@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-AU" className={`${outfit.variable} h-full antialiased`}>
-      <body className="min-h-full bg-cacao font-sans text-sugar">
+      <body className="min-h-full bg-cacao font-sans text-sugar antialiased">
         <div className="grain" aria-hidden="true" />
         {children}
       </body>

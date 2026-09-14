@@ -9,4 +9,4 @@ npm install
 npm run dev
 ```
 
-Orders currently go to the [Facebook page](https://www.facebook.com/profile.php?id=61593483718282).
+The bag and Saturday collection request are a demo — no payment, no live orders.
