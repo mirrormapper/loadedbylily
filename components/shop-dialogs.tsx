@@ -200,10 +200,12 @@ function BundleDialog({ slug }: { slug: string }) {
 
   if (!bundle) return null
 
+  const cookieCount = bundle.cookieCount
+  const bundleSlug = bundle.slug
   const picked = Object.entries(counts).flatMap(([flavourSlug, qty]) =>
     Array.from({ length: qty }, () => flavourSlug)
   )
-  const remaining = bundle.cookieCount - picked.length
+  const remaining = cookieCount - picked.length
   const pistachioExtra = picked.filter((item) => item === "pistachio").length
   const total = bundle.price + pistachioExtra
 
@@ -214,17 +216,17 @@ function BundleDialog({ slug }: { slug: string }) {
       const other = Object.entries(current)
         .filter(([key]) => key !== flavourSlug)
         .reduce((sum, [, value]) => sum + value, 0)
-      const allowed = Math.min(next, bundle.cookieCount - other)
+      const allowed = Math.min(next, cookieCount - other)
       return { ...current, [flavourSlug]: allowed }
     })
   }
 
   function submit() {
-    if (picked.length !== bundle.cookieCount) {
-      setError(`Pick ${bundle.cookieCount} cookies for this box.`)
+    if (picked.length !== cookieCount) {
+      setError(`Pick ${cookieCount} cookies for this box.`)
       return
     }
-    addBundle({ slug: bundle.slug, flavourSlugs: picked })
+    addBundle({ slug: bundleSlug, flavourSlugs: picked })
   }
 
   return (
